@@ -286,7 +286,7 @@ body {
     align-items: center;
     padding-left: 10rem;
     padding-right: 10rem;
-    gap: 20px;
+    gap: 25px;
     margin-top: 2rem;
 }
 
@@ -294,7 +294,7 @@ body {
     text-align: left;
     width: 45%;
     margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 6rem;
 }
 
 .sub__heading{
@@ -332,7 +332,7 @@ body {
 
 
 .section__about_image{
-    width: 45%;
+    width: 50%;
     margin-top: -20rem;
 }
 
@@ -373,7 +373,74 @@ body {
 }
 
 
+/* feature section */
 
+.section__features {
+    padding: 20rem 0;
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(./image/bg.jpg);
+    background-size: cover;
+    transform: skewY(-7deg);
+    margin-top: -5rem;
+}
+
+.section__features > * {
+    transform: skewY(7deg);
+}
+
+.section__features__wrapper{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 0 12rem ;
+}
+
+.section__features__wrapper [class^="feature_item"]:not(:last-child) {
+    margin-right: 3rem;
+}
+.section__features__wrapper .feature_item {
+    width: calc( (100% - 3 * 3rem) / 4);
+}
+.section__features__wrapper [class^="feature_item"] {
+    float: left;
+}
+
+.feature__box{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 4rem 1rem;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    transition: transform .3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.feature__box:hover{
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
+}
+
+.feature__box__icon {
+    height: 48px;
+    width: 48px;
+    margin-bottom: 0.5rem;
+    /* display: inline-block; */
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.feature__heading{
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.feature__box__text{
+    font-size: 12px;
+}
 
 
 @keyframes slideFromBottom {
