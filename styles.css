@@ -15,6 +15,10 @@ body {
     padding: 1.5rem;
 }
 
+section {
+    display: block;
+}
+
 
 /* sidebar */
 
@@ -377,7 +381,7 @@ body {
 /* feature section */
 
 .section__features {
-    padding: 20rem 0;
+    padding: 10rem 0;
     background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(./image/bg.jpg);
     background-size: cover;
     transform: skewY(-7deg);
@@ -389,17 +393,19 @@ body {
 }
 
 .section__features__wrapper{
-    display: flex;
+    display: inline-block;
     align-items: center;
     text-align: center;
-    padding: 0 12rem ;
+    max-width: 100rem;
+    margin: 0 auto;
+    padding: 10rem;
 }
 
 .section__features__wrapper [class^="feature_item"]:not(:last-child) {
     margin-right: 3rem;
 }
 .section__features__wrapper .feature_item {
-    width: calc( (100% - 3 * 3rem) / 4);
+    width: calc( (100% - 3 * 3rem) / 4)
 }
 .section__features__wrapper [class^="feature_item"] {
     float: left;
@@ -462,8 +468,8 @@ body {
 .section__tours_card__container [class^="section__tours_card__item"]:not(:last-child) {
     margin-right: 3rem;
 }
-.section__tours_card__container .section__tours_card__item {
-    width: calc( (100% - 2 * 3rem) / 3);
+.section__tours_card__item {
+    width: 30%
 }
 .section__tours_card__container [class^="section__tours_card__item"] {
     float: left;
@@ -471,7 +477,8 @@ body {
 .card {
     perspective: 150rem;
     position: relative;
-    height: 32rem;
+    height: 35rem;
+    width: 100%;
 }
 
 .card__side__front {
@@ -528,7 +535,7 @@ body {
 }
 
 .card__side {
-    height: 32rem;
+    height: 35rem;
     transition: all .8s ease;
     position: absolute;
     top: 0;
@@ -563,13 +570,13 @@ body {
 }
 
 .card__heading {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 300;
     text-transform: uppercase;
     text-align: right;
     color: #fff;
     position: absolute;
-    top: 6rem;
+    top: 4rem;
     right: 2rem;
     width: 75%;
 }
@@ -590,7 +597,7 @@ body {
 }
 
 .card__details {
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .card__details ul {
@@ -861,6 +868,7 @@ body {
 .form__radio-group {
     width: 30%;
     display: inline-block;
+    align-items: center;
 }
 
 .form__radio-input {
@@ -958,7 +966,7 @@ body {
 
 .footer__copyright {
     border-top: 1px solid #777;
-    padding: 1rem;
+    padding: .5rem;
     width: 80%;
     float: right;
 }
@@ -984,14 +992,355 @@ body {
     clear: both;
 }
 
-@media (max-width: 75em){
-    .book {
-        background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 65%, transparent 65%), url(../img/nat-10.jpg);
+/* popup section */
+
+.popup {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+}
+
+.popup:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup:target .popup__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+.popup__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    background-color: #fff;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    display: table;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all .4s .2s;
+}
+
+.popup__left {
+    width: 33.33%;
+    display: table-cell;
+}
+
+.popup__img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.popup__right {
+    width: 70%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 2rem 2rem;
+}
+
+.popup__close:link, .popup__close:visited {
+    color: #777;
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all .2s;
+    line-height: 1;
+}
+
+.u-margin-bottom-small {
+    margin-bottom: 2rem;
+}
+
+.u-margin-bottom-small {
+    margin-bottom: 1rem;
+}
+.heading-tertiary {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.popup__text {
+    font-size: 14px;
+    margin-bottom: 4rem;
+    /* -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 1px solid #eee; */
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 1px solid #eee;
+    /* -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto; */
+    hyphens: auto;
+}
+
+
+@media (max-width: 680px) {
+    html{
+        font-size: 10px;
     }
-    .book__form {
-        width: 65%;
+    .heading__main{
+        letter-spacing: 1rem;
+    }
+    .heading__sub{
+        letter-spacing: .5rem;
+    }
+    .secondary_heading{
+        font-size: 12px !important;
     }
 }
+
+@media (max-width: 780px)
+{   
+
+.composition__photo {
+    float: left;
+    position: relative;
+    width: 33.333333%;
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+}    
+.composition__photo__p1 {
+    top: 0;
+    left: 1rem;
+    transform: scale(1.2);
+}
+.composition__photo__p2 {
+    top: 0;
+    z-index: 100;
+    transform: scale(1.4);
+    right: 0;
+}
+.composition__photo__p3 {
+    top: 0rem;
+    left: 0;
+    transform: scale(1.1);
+}
+
+.story{
+    transform: skewX(0deg);
+}
+
+.story__shape{
+    transform: skewX(0deg);
+    margin-right: 1rem;
+}
+
+.story__text {
+    transform: skewX(0deg);
+}
+
+}
+
+
+@media (max-width: 980px) {
+
+    .section__about_content{
+        flex-direction: column;
+        padding-bottom: 25rem;
+    }
+
+    .section__about_text{
+        width: 80%;
+        margin-bottom: 25rem;
+    }
+
+    .section__about_image{
+        width: 70%;
+    }
+ 
+    .feature__box{
+        padding: 1.2rem ;
+    }
+
+    .footer{
+        padding: 8rem 6rem;
+    }
+
+    .footer__row {
+        max-width: 50rem;
+        padding: 0 3rem;
+    }
+
+    .footer__copyright{
+        float: none;
+        display: inline-block;
+    }
+
+    .footer__row [class^="col-"]:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 6rem;
+    }
+    .footer__row [class^="col-"] {
+        width: 100% !important;
+    }
+    
+}
+
+@media (max-width: 1024px) {
+
+    .section__about{
+        padding-top: 20rem;
+    }
+
+    .section__about_content{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .sub__heading , .paragraph{
+       font-size: .8rem;
+    }
+    .secondary_heading{
+        font-size: 28px;
+    }
+
+    .section__features__wrapper [class^="feature_item"]:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+
+    .section__features__wrapper{
+        padding: 0 3rem;
+    }
+
+    .section__features__wrapper [class^="feature_item"] {
+        width: 90% !important;
+    }
+
+    .section__tours{
+        padding: auto;
+    }
+
+    .section__tours_card__container{
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 10rem;
+    }
+
+    .section__tours_card__container [class^="section__tours_card__item"]:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+
+    .section__tours_card__container .section__tours_card__item {
+        width: 90% !important
+    }
+
+    .card {
+        height: auto;
+        border-radius: 3px;
+        background-color: #ffffff;
+        box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    }
+
+    .card__picture{
+        height: 10rem;
+    }
+    .card__side {
+    
+        height: auto;
+        position: relative;
+        box-shadow: none;
+        
+    }
+    .card__details {
+        padding: 1rem 2rem;
+    }
+    .card:hover .card__side__front {
+        transform: rotateY(0);
+    }
+
+    .card__side--back {
+        transform: rotateY(0);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+    }
+    .card__side_back_content {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: translate(0);
+        width: 100%;
+        padding: 2rem 0;
+    }
+    .card__price-box {
+        margin-bottom: 2rem;
+    }
+
+    .card__price-only {
+        font-size: 12px;
+      
+    }
+    
+    .card__price-value {
+        font-size: 2rem;
+    }
+
+    .card__heading{
+        font-size: 1rem;
+    }
+
+    .card__details ul li {
+        font-size: 11px;
+    }
+
+    .btn, .btn:link, .btn:visited{
+        font-size: 10px !important;
+        padding: .5rem 1rem;
+    }
+
+    .story__container {
+        max-width: 30rem;
+        margin: 0 auto;
+    }
+
+    .story{
+        font-size: 14px;
+        padding: 2rem 4rem ;
+    }
+
+    .section__book {
+        padding: 6rem 0;
+    }
+
+    .section__book_container {
+        max-width: 40rem;
+        padding: 0 3rem;
+
+    }
+
+    .book {
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(./image/book_bg.jpg);
+    }
+
+    .book__form {
+        width: 100% !important
+    }
+
+    .form__radio-group {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .form__radio-label{
+        padding-left: 3rem;
+        padding-top: 5px;
+    }
+}
+
 
 @keyframes slideFromBottom {
     0%{
